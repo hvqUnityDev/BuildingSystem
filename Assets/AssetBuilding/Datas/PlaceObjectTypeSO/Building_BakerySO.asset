@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aec3cacaceb2804c9a5da2964d8549c, type: 3}
+  m_Name: Building_BakerySO
+  m_EditorClassIdentifier: 
+  nameString: Building Bakery
+  prefabs: {fileID: 8051994524344971200, guid: 8110b7a821f4e4a4c9c3d4f67034cb8f, type: 3}
+  visual: {fileID: 8051994524344971200, guid: 8110b7a821f4e4a4c9c3d4f67034cb8f, type: 3}
+  width: 2
+  height: 1
