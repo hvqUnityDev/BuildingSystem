@@ -7,7 +7,9 @@ using UnityEngine.Serialization;
 
 public class GridBuildingSystem : MonoBehaviour
 {
-    [SerializeField] private PlacedObjectTypeSO placedObjectTypeSO;
+    [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
+    
+    private PlacedObjectTypeSO placedObjectTypeSO;
     [SerializeField] private LayerMask mouseColliderLayerMark;
     private Grid<GridObject> grid;
     private Dir dir = Dir.Down;
@@ -19,6 +21,7 @@ public class GridBuildingSystem : MonoBehaviour
         
         grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, Vector3.zero, (Grid<GridObject> g, int x, int y) => new GridObject(g, x, y));
         grid.SetParent(transform);
+        placedObjectTypeSO = placedObjectTypeSOList[0];
     }
 
     private void Update()
@@ -58,6 +61,12 @@ public class GridBuildingSystem : MonoBehaviour
             dir = PlacedObjectTypeSO.GetNextDir(dir);
             UtilsClass.CreateWorldTextPopup("" + dir, GetMouseWorldPosition());
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { placedObjectTypeSO = placedObjectTypeSOList[0]; }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { placedObjectTypeSO = placedObjectTypeSOList[1]; }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { placedObjectTypeSO = placedObjectTypeSOList[2]; }
+        if (Input.GetKeyDown(KeyCode.Alpha4)) { placedObjectTypeSO = placedObjectTypeSOList[3]; }
+        if (Input.GetKeyDown(KeyCode.Alpha5)) { placedObjectTypeSO = placedObjectTypeSOList[4]; }
     }
 
     private Vector3 GetMouseWorldPosition()

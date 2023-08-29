@@ -167,7 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e39da5bdbabab544b9f20c4b24a463d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placedObjectTypeSO: {fileID: 11400000, guid: 9cfefa85e5c610f45a4134be810a12a3, type: 2}
+  placedObjectTypeSOList:
+  - {fileID: 11400000, guid: 9cfefa85e5c610f45a4134be810a12a3, type: 2}
+  - {fileID: 11400000, guid: d5cc914cbd0d5c146a33309adf0b2136, type: 2}
+  - {fileID: 11400000, guid: 1ced76221d0106e41b90a06b56011417, type: 2}
+  - {fileID: 11400000, guid: 3972681249035fe439ed60c2a6bd81ec, type: 2}
+  - {fileID: 11400000, guid: 659ade9c664bbf7489cc11a9ac4f16af, type: 2}
   mouseColliderLayerMark:
     serializedVersion: 2
     m_Bits: 64
