@@ -10,6 +10,7 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private PlacedObjectTypeSO placedObjectTypeSO;
     [SerializeField] private LayerMask mouseColliderLayerMark;
     private Grid<GridObject> grid;
+    private Dir dir = Dir.Down;
 
     private void Awake()
     {
@@ -25,14 +26,21 @@ public class GridBuildingSystem : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) 
         {
             grid.GetXZ(GetMouseWorldPosition(), out int x, out int z);
-            var listGrid = placedObjectTypeSO.GetGridPositionList(new Vector2Int(x, z), Dir.Down);
-            
+            var listGrid = placedObjectTypeSO.GetGridPositionList(new Vector2Int(x, z), dir);
             var gridObject = grid.GetGridObject(x, z);
-            
             
             if (gridObject.CanBuild())
             {
-                Transform obj  = Instantiate(placedObjectTypeSO.prefabs, grid.GetWorldPosition(x, z), Quaternion.identity).transform;
+                Vector2Int rotationOffset = placedObjectTypeSO.GetRotationOffset(dir);
+                Vector3 placeObjectWorldPosition =
+                    grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
+
+                Transform obj  
+                    = Instantiate(
+                        placedObjectTypeSO.prefabs, 
+                        placeObjectWorldPosition, 
+                        Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0)).transform;
+                
                 foreach (var position in listGrid)
                 {
                     grid.GetGridObject(position.x, position.y).SetTransform(obj);
@@ -43,6 +51,12 @@ public class GridBuildingSystem : MonoBehaviour
                 UtilsClass.CreateWorldTextPopup("Cannot build here !", GetMouseWorldPosition());
             }
             
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            dir = PlacedObjectTypeSO.GetNextDir(dir);
+            UtilsClass.CreateWorldTextPopup("" + dir, GetMouseWorldPosition());
         }
     }
 
