@@ -38,15 +38,11 @@ public class GridBuildingSystem : MonoBehaviour
                 Vector3 placeObjectWorldPosition =
                     grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
 
-                Transform obj  
-                    = Instantiate(
-                        placedObjectTypeSO.prefabs, 
-                        placeObjectWorldPosition, 
-                        Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0)).transform;
-                
+                PlaceObject placeObject = PlaceObject.Create(GetMouseWorldPosition(), new Vector2Int(x, z), dir, placedObjectTypeSO);
+
                 foreach (var position in listGrid)
                 {
-                    grid.GetGridObject(position.x, position.y).SetTransform(obj);
+                    grid.GetGridObject(position.x, position.y).SetPlaceObject(placeObject);
                 }
             }
             else
@@ -54,6 +50,23 @@ public class GridBuildingSystem : MonoBehaviour
                 UtilsClass.CreateWorldTextPopup("Cannot build here !", GetMouseWorldPosition());
             }
             
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            GridObject gridObject = grid.GetGridObject(GetMouseWorldPosition());
+            PlaceObject placeObject = gridObject.GetPlaceObject();
+            if (placeObject != null)
+            {
+                placeObject.DestroySelf();
+            }
+
+            var listGrid = placeObject.GetGridPositionList();
+            foreach (var position in listGrid)
+            {
+                grid.GetGridObject(position.x, position.y).ClearPlaceObject();
+            }
+
         }
 
         if (Input.GetKeyDown(KeyCode.R))

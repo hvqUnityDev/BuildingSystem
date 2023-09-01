@@ -7,7 +7,7 @@ public class GridObject : MonoBehaviour
     private Grid<GridObject> grid;
     private int x;
     private int z;
-    private Transform _transform;
+    private PlaceObject placeObject;
     public GridObject(Grid<GridObject> grid, int x, int z)
     {
         this.grid = grid;
@@ -15,19 +15,30 @@ public class GridObject : MonoBehaviour
         this.z = z;
     }
 
-    public void SetTransform(Transform transform)
+    public void SetPlaceObject(PlaceObject placeObject)
     {
-        _transform = transform;
+        this.placeObject = placeObject;
         grid.TriggerGridObjectChanged(x, z);
     }
 
     public override string ToString()
     {
-        return x + "," + z + "\n" + _transform;
+        return x + "," + z + "\n" + placeObject;
     }
 
     public bool CanBuild()
     {
-        return _transform == null;
+        return placeObject == null;
+    }
+
+    public void ClearPlaceObject()
+    {
+        this.placeObject = null;
+        grid.TriggerGridObjectChanged(x, z);
+    }
+
+    public PlaceObject GetPlaceObject()
+    {
+        return placeObject;
     }
 }
