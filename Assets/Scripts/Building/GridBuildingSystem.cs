@@ -7,8 +7,10 @@ using UnityEngine.Serialization;
 
 public class GridBuildingSystem : MonoBehaviour
 {
-    [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
+    public static GridBuildingSystem Ins;
     
+    [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
+
     private PlacedObjectTypeSO placedObjectTypeSO;
     [SerializeField] private LayerMask mouseColliderLayerMark;
     private Grid<GridObject> grid;
@@ -16,6 +18,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Awake()
     {
+        Ins = this;
         int gridWidth = 10, gridHeight = 10;
         float cellSize = 10f;
         
@@ -44,6 +47,8 @@ public class GridBuildingSystem : MonoBehaviour
                 {
                     grid.GetGridObject(position.x, position.y).SetPlaceObject(placeObject);
                 }
+
+                DeselectObjectType();
             }
             else
             {
@@ -74,11 +79,11 @@ public class GridBuildingSystem : MonoBehaviour
             UtilsClass.CreateWorldTextPopup("" + dir, GetMouseWorldPosition());
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { placedObjectTypeSO = placedObjectTypeSOList[0]; }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { placedObjectTypeSO = placedObjectTypeSOList[1]; }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { placedObjectTypeSO = placedObjectTypeSOList[2]; }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { placedObjectTypeSO = placedObjectTypeSOList[3]; }
-        if (Input.GetKeyDown(KeyCode.Alpha5)) { placedObjectTypeSO = placedObjectTypeSOList[4]; }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { placedObjectTypeSO = placedObjectTypeSOList[0]; RefreshSelectedObjectType();}
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { placedObjectTypeSO = placedObjectTypeSOList[1]; RefreshSelectedObjectType();}
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { placedObjectTypeSO = placedObjectTypeSOList[2]; RefreshSelectedObjectType();}
+        if (Input.GetKeyDown(KeyCode.Alpha4)) { placedObjectTypeSO = placedObjectTypeSOList[3]; RefreshSelectedObjectType();}
+        if (Input.GetKeyDown(KeyCode.Alpha5)) { placedObjectTypeSO = placedObjectTypeSOList[4]; RefreshSelectedObjectType();}
     }
 
     private Vector3 GetMouseWorldPosition()
@@ -90,6 +95,45 @@ public class GridBuildingSystem : MonoBehaviour
         }
         
         return  Vector3.zero;
+    }
+    
+    private void DeselectObjectType() {
+        placedObjectTypeSO = null; RefreshSelectedObjectType();
+    }
+
+    public event EventHandler OnSelectedChanged;
+    private void RefreshSelectedObjectType() {
+        OnSelectedChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public Vector2Int GetGridPosition(Vector3 worldPosition) {
+        grid.GetXZ(worldPosition, out int x, out int z);
+        return new Vector2Int(x, z);
+    }
+
+    public Vector3 GetMouseWorldSnappedPosition() {
+        Vector3 mousePosition = GetMouseWorldPosition();
+        grid.GetXZ(mousePosition, out int x, out int z);
+
+        if (placedObjectTypeSO != null) {
+            Vector2Int rotationOffset = placedObjectTypeSO.GetRotationOffset(dir);
+            Vector3 placedObjectWorldPosition = grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
+            return placedObjectWorldPosition;
+        } else {
+            return mousePosition;
+        }
+    }
+
+    public Quaternion GetPlacedObjectRotation() {
+        if (placedObjectTypeSO != null) {
+            return Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0);
+        } else {
+            return Quaternion.identity;
+        }
+    }
+
+    public PlacedObjectTypeSO GetPlacedObjectTypeSO() {
+        return placedObjectTypeSO;
     }
 }
 
