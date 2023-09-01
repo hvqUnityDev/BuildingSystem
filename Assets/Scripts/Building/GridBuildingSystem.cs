@@ -38,7 +38,7 @@ public class GridBuildingSystem : MonoBehaviour
                 Vector3 placeObjectWorldPosition =
                     grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
 
-                PlaceObject placeObject = PlaceObject.Create(GetMouseWorldPosition(), new Vector2Int(x, z), dir, placedObjectTypeSO);
+                PlaceObject placeObject = PlaceObject.Create(placeObjectWorldPosition, new Vector2Int(x, z), dir, placedObjectTypeSO);
 
                 foreach (var position in listGrid)
                 {
@@ -59,14 +59,13 @@ public class GridBuildingSystem : MonoBehaviour
             if (placeObject != null)
             {
                 placeObject.DestroySelf();
+                
+                var listGrid = placeObject.GetGridPositionList();
+                foreach (var position in listGrid)
+                {
+                    grid.GetGridObject(position.x, position.y).ClearPlaceObject();
+                }
             }
-
-            var listGrid = placeObject.GetGridPositionList();
-            foreach (var position in listGrid)
-            {
-                grid.GetGridObject(position.x, position.y).ClearPlaceObject();
-            }
-
         }
 
         if (Input.GetKeyDown(KeyCode.R))
