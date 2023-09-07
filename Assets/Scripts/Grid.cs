@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CodeMonkey.Utils;
 using UnityEngine;
 
@@ -139,5 +140,15 @@ public class Grid<TGridObject>
         }
 
         return default(TGridObject);
+    }
+
+    public bool CheckCanBuildInList(List<Vector2Int> list) {
+        foreach (var vector in list) {
+            if (vector.x < 0 || vector.y < 0 || vector.x >= width || vector.y >= height) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -32,11 +32,17 @@ public class GridBuildingSystem : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) 
         {
             grid.GetXZ(GetMouseWorldPosition(), out int x, out int z);
-            var listGrid = placedObjectTypeSO.GetGridPositionList(new Vector2Int(x, z), dir);
-            var gridObject = grid.GetGridObject(x, z);
+            if (x < 0 || z < 0 || x >= grid.GetWidth() || z >= grid.GetHeight()) {
+                UtilsClass.CreateWorldTextPopup("Cannot build here !", GetMouseWorldPosition());
+                return;
+            }
             
-            if (gridObject.CanBuild())
-            {
+            var listGrid = placedObjectTypeSO.GetGridPositionList(new Vector2Int(x, z), dir);
+            if (!grid.CheckCanBuildInList(listGrid) || !CheckCanBuildInList(listGrid)) {
+                UtilsClass.CreateWorldTextPopup("Cannot build here !", GetMouseWorldPosition());
+                return;
+            }
+            else {
                 Vector2Int rotationOffset = placedObjectTypeSO.GetRotationOffset(dir);
                 Vector3 placeObjectWorldPosition =
                     grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
@@ -50,11 +56,6 @@ public class GridBuildingSystem : MonoBehaviour
 
                 DeselectObjectType();
             }
-            else
-            {
-                UtilsClass.CreateWorldTextPopup("Cannot build here !", GetMouseWorldPosition());
-            }
-            
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -84,6 +85,14 @@ public class GridBuildingSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) { placedObjectTypeSO = placedObjectTypeSOList[2]; RefreshSelectedObjectType();}
         if (Input.GetKeyDown(KeyCode.Alpha4)) { placedObjectTypeSO = placedObjectTypeSOList[3]; RefreshSelectedObjectType();}
         if (Input.GetKeyDown(KeyCode.Alpha5)) { placedObjectTypeSO = placedObjectTypeSOList[4]; RefreshSelectedObjectType();}
+    }
+
+    private bool CheckCanBuildInList(List<Vector2Int> listGrid) {
+        foreach (var vector in listGrid) {
+            var gridObject = grid.GetGridObject(vector.x, vector.y);
+            if (!gridObject.CanBuild()) return false;
+        }
+        return true;
     }
 
     private Vector3 GetMouseWorldPosition()
