@@ -33,9 +33,15 @@ public class GridBuildingSystem : MonoBehaviour
         {
             grid.GetXZ(GetMouseWorldPosition(), out int x, out int z);
             if (x < 0 || z < 0 || x >= grid.GetWidth() || z >= grid.GetHeight()) {
-                UtilsClass.CreateWorldTextPopup("Cannot build here !", GetMouseWorldPosition());
+                if (x != -100 && z != -100)
+                {
+                    UtilsClass.CreateWorldTextPopup("Cannot build here !", GetMouseWorldPosition());
+                }
+                
                 return;
             }
+
+            if (!placedObjectTypeSO) return;
             
             var listGrid = placedObjectTypeSO.GetGridPositionList(new Vector2Int(x, z), dir);
             if (!grid.CheckCanBuildInList(listGrid) || !CheckCanBuildInList(listGrid)) {
@@ -80,11 +86,36 @@ public class GridBuildingSystem : MonoBehaviour
             UtilsClass.CreateWorldTextPopup("" + dir, GetMouseWorldPosition());
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { placedObjectTypeSO = placedObjectTypeSOList[0]; RefreshSelectedObjectType();}
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { placedObjectTypeSO = placedObjectTypeSOList[1]; RefreshSelectedObjectType();}
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { placedObjectTypeSO = placedObjectTypeSOList[2]; RefreshSelectedObjectType();}
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { placedObjectTypeSO = placedObjectTypeSOList[3]; RefreshSelectedObjectType();}
-        if (Input.GetKeyDown(KeyCode.Alpha5)) { placedObjectTypeSO = placedObjectTypeSOList[4]; RefreshSelectedObjectType();}
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetplaceObjectTypeSO(placedObjectTypeSOList[0]); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetplaceObjectTypeSO(placedObjectTypeSOList[1]); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetplaceObjectTypeSO(placedObjectTypeSOList[2]); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetplaceObjectTypeSO(placedObjectTypeSOList[3]); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SetplaceObjectTypeSO(placedObjectTypeSOList[4]); 
+        }
+    }
+
+    public void SetplaceObjectTypeSO(PlacedObjectTypeSO placedObjectTypeSo)
+    {
+        this.placedObjectTypeSO = placedObjectTypeSo;
+        RefreshSelectedObjectType();
     }
 
     private bool CheckCanBuildInList(List<Vector2Int> listGrid) {
@@ -103,7 +134,7 @@ public class GridBuildingSystem : MonoBehaviour
             return hit.point;
         }
         
-        return  Vector3.zero;
+        return  Vector3.one * -100;
     }
     
     private void DeselectObjectType() {
