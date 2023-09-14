@@ -38,7 +38,7 @@ public class BuildingGhost : MonoBehaviour
             visual = null;
         }
 
-        PlacedObjectTypeSO placeObjectSO = GridBuildingSystem.Ins.GetPlacedObjectTypeSO();
+        PlacedObjectTypeSO placeObjectSO = GridBuildingSystem.Ins.GetCurrentPlacedObjectTypeSO();
         if (placeObjectSO != null)
         {
             visual = Instantiate(placeObjectSO.visual, Vector3.zero, Quaternion.identity);

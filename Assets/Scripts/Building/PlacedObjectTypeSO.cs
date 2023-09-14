@@ -11,6 +11,7 @@ public class PlacedObjectTypeSO : ScriptableObject
     public Transform visual;
     public int width;
     public int height;
+    public int price;
 
     public static Dir GetNextDir(Dir dir)
     {

@@ -8,11 +8,13 @@ using UnityEngine.Serialization;
 public class GridBuildingSystem : MonoBehaviour
 {
     public static GridBuildingSystem Ins;
+
+    public Action OnDoneClickBuild;
     
     [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList;
-
-    private PlacedObjectTypeSO placedObjectTypeSO;
     [SerializeField] private LayerMask mouseColliderLayerMark;
+    
+    private PlacedObjectTypeSO placedObjectTypeSO;
     private Grid<GridObject> grid;
     private Dir dir = Dir.Down;
 
@@ -24,7 +26,6 @@ public class GridBuildingSystem : MonoBehaviour
         
         grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, Vector3.zero, (Grid<GridObject> g, int x, int y) => new GridObject(g, x, y));
         grid.SetParent(transform);
-        placedObjectTypeSO = placedObjectTypeSOList[0];
     }
 
     private void Update()
@@ -60,6 +61,7 @@ public class GridBuildingSystem : MonoBehaviour
                     grid.GetGridObject(position.x, position.y).SetPlaceObject(placeObject);
                 }
 
+                OnDoneClickBuild?.Invoke();
                 DeselectObjectType();
             }
         }
@@ -78,6 +80,8 @@ public class GridBuildingSystem : MonoBehaviour
                     grid.GetGridObject(position.x, position.y).ClearPlaceObject();
                 }
             }
+            
+            DeselectObjectType();
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -138,7 +142,8 @@ public class GridBuildingSystem : MonoBehaviour
     }
     
     private void DeselectObjectType() {
-        placedObjectTypeSO = null; RefreshSelectedObjectType();
+        placedObjectTypeSO = null; 
+        RefreshSelectedObjectType();
     }
 
     public event EventHandler OnSelectedChanged;
@@ -172,8 +177,13 @@ public class GridBuildingSystem : MonoBehaviour
         }
     }
 
-    public PlacedObjectTypeSO GetPlacedObjectTypeSO() {
+    public PlacedObjectTypeSO GetCurrentPlacedObjectTypeSO() {
         return placedObjectTypeSO;
+    }
+
+    public List<PlacedObjectTypeSO> GetListPlacedObjectTypeSO()
+    {
+        return placedObjectTypeSOList;
     }
 }
 

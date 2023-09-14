@@ -156,6 +156,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &290217296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 290217297}
+  - component: {fileID: 290217298}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &290217297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290217296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &290217298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290217296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1e8ff8e9aa3c04281fa3405a52852c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingSystem: {fileID: 478513272}
 --- !u!1 &412144794
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,12 +348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtCoin: {fileID: 998953833}
   orderUI: {fileID: 412144799}
-  placedObjectTypeSOList:
-  - {fileID: 11400000, guid: 9cfefa85e5c610f45a4134be810a12a3, type: 2}
-  - {fileID: 11400000, guid: d5cc914cbd0d5c146a33309adf0b2136, type: 2}
-  - {fileID: 11400000, guid: 1ced76221d0106e41b90a06b56011417, type: 2}
-  - {fileID: 11400000, guid: 3972681249035fe439ed60c2a6bd81ec, type: 2}
-  - {fileID: 11400000, guid: 659ade9c664bbf7489cc11a9ac4f16af, type: 2}
 --- !u!1 &478513270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtName: {fileID: 1444130086}
   btnItemOrder: {fileID: 1314332055}
+  imgItemOrder: {fileID: 1314332052}
+  colorAvailable: {r: 1, g: 0, b: 0, a: 1}
+  colorUnavailable: {r: 1, g: 0, b: 0, a: 0.39607844}
 --- !u!114 &1314332055
 MonoBehaviour:
   m_ObjectHideFlags: 0
