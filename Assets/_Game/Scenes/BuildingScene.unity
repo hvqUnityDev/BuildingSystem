@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -391,8 +391,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9cfefa85e5c610f45a4134be810a12a3, type: 2}
   - {fileID: 11400000, guid: d5cc914cbd0d5c146a33309adf0b2136, type: 2}
   - {fileID: 11400000, guid: 1ced76221d0106e41b90a06b56011417, type: 2}
-  - {fileID: 11400000, guid: 3972681249035fe439ed60c2a6bd81ec, type: 2}
-  - {fileID: 11400000, guid: 659ade9c664bbf7489cc11a9ac4f16af, type: 2}
+  - {fileID: 11400000, guid: 46c24d6df64aea24f947ee8ec4cd7f0e, type: 2}
+  - {fileID: 11400000, guid: 87c9d4a0386876147aae20123c205d12, type: 2}
   mouseColliderLayerMark:
     serializedVersion: 2
     m_Bits: 64
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56a1f846da3355a4781a7f9cc63da41d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

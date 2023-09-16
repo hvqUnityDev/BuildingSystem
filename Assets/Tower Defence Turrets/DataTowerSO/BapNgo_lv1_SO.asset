@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aec3cacaceb2804c9a5da2964d8549c, type: 3}
+  m_Name: BapNgo_lv1_SO
+  m_EditorClassIdentifier: 
+  nameString: BapNgo
+  prefabs: {fileID: 61957157235742433, guid: 4795545a7188dde43a910ef5f1737245, type: 3}
+  visual: {fileID: 61957157235742433, guid: df9bb59bcf3a5e24faa340950361bda5, type: 3}
+  width: 1
+  height: 1
+  price: 1
