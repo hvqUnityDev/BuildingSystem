@@ -55,12 +55,12 @@ public class GridBuildingSystem : MonoBehaviour
                     grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
 
                 PlaceObject placeObject = PlaceObject.Create(placeObjectWorldPosition, new Vector2Int(x, z), dir, placedObjectTypeSO);
-
                 foreach (var position in listGrid)
                 {
                     grid.GetGridObject(position.x, position.y).SetPlaceObject(placeObject);
                 }
 
+                placeObject.GetComponent<TowerBase>().Init(placedObjectTypeSO);
                 OnDoneClickBuild?.Invoke();
                 DeselectObjectType();
             }

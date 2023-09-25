@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 [CreateAssetMenu()]
 public class PlacedObjectTypeSO : ScriptableObject
 {
+    [Header("Info to Spawn")]
     public string nameString;
     public Transform prefabs;
     public Transform visual;
@@ -81,6 +82,11 @@ public class PlacedObjectTypeSO : ScriptableObject
         }
         return gridPositionlist;
     }
+
+    [Header("Info to Combat")]
+    public float delayAttack;
+    public float maxHp;
+    public float dame;
 }
 
 public enum Dir

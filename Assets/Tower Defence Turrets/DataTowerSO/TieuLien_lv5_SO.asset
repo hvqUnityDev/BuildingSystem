@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aec3cacaceb2804c9a5da2964d8549c, type: 3}
-  m_Name: BapNgo_lv1_SO
+  m_Name: TieuLien_lv5_SO
   m_EditorClassIdentifier: 
-  nameString: BapNgo
-  prefabs: {fileID: 61957157235742433, guid: 4795545a7188dde43a910ef5f1737245, type: 3}
-  visual: {fileID: 61957157235742433, guid: df9bb59bcf3a5e24faa340950361bda5, type: 3}
+  nameString: Tieu Lien
+  prefabs: {fileID: 3342513876159426882, guid: 0c8b0c02c546f9246af5a2d4f129582a, type: 3}
+  visual: {fileID: 3342513876159426882, guid: b58d2d5564332304faaed19a515b777b, type: 3}
   width: 1
   height: 1
   price: 1
-  delayAttack: 0
-  maxHp: 5
-  dame: 0
+  delayAttack: 1
+  maxHp: 7
+  dame: 1
+  bullet: {fileID: 3565617238180767658, guid: f332de6b8cab0c741a4dbb0a0b1ebd4b, type: 3}
