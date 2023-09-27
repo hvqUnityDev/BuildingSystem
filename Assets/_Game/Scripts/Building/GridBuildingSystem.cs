@@ -16,7 +16,7 @@ public class GridBuildingSystem : MonoBehaviour
     
     private PlacedObjectTypeSO placedObjectTypeSO;
     private Grid<GridObject> grid;
-    private Dir dir = Dir.Down;
+    private Dir dir = Dir.Right;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class GridBuildingSystem : MonoBehaviour
                     grid.GetGridObject(position.x, position.y).SetPlaceObject(placeObject);
                 }
 
-                placeObject.GetComponent<TowerBase>().Init(placedObjectTypeSO);
+                placeObject.GetComponent<ActorBase>().Init(placedObjectTypeSO);
                 OnDoneClickBuild?.Invoke();
                 DeselectObjectType();
             }
@@ -86,8 +86,8 @@ public class GridBuildingSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            dir = PlacedObjectTypeSO.GetNextDir(dir);
-            UtilsClass.CreateWorldTextPopup("" + dir, GetMouseWorldPosition());
+            //dir = PlacedObjectTypeSO.GetNextDir(dir);
+            //UtilsClass.CreateWorldTextPopup("" + dir, GetMouseWorldPosition());
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))

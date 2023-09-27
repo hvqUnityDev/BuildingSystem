@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBase : MonoBehaviour {
+public class ActorBase : MonoBehaviour {
     protected float nextTimeNormalAttack, delayAttack, hp, dame;
     private bool isInit = false;
     public virtual void Init(PlacedObjectTypeSO placedObjectTypeSo) {
@@ -32,5 +32,14 @@ public class TowerBase : MonoBehaviour {
     
     public virtual void Attacked(float dame) {
         hp -= dame;
+        if (hp <= 0)
+        {
+            Dead();
+        }
+    }
+
+    protected virtual void Dead()
+    {
+        
     }
 }
