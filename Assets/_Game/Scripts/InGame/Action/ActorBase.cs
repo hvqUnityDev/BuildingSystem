@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ActorBase : MonoBehaviour {
-    protected float nextTimeNormalAttack, delayAttack, hp, dame;
+    protected float nextTimeNormalAttack, delayAttack, hp, dame, speed;
+    [SerializeField] protected float attackRange;
     private bool isInit = false;
     public virtual void Init(PlacedObjectTypeSO placedObjectTypeSo) {
         isInit = true;
         delayAttack = placedObjectTypeSo.delayAttack;
         hp = placedObjectTypeSo.maxHp;
         dame = placedObjectTypeSo.dame;
-        
+        attackRange = placedObjectTypeSo.attackRange;
+        speed = placedObjectTypeSo.speed;
         nextTimeNormalAttack = Time.time + placedObjectTypeSo.delayAttack;
     }
     
@@ -22,9 +24,14 @@ public class ActorBase : MonoBehaviour {
             HandleAttack();
             nextTimeNormalAttack += delayAttack;
         }
+
+        HandleMove();
     }
 
     protected virtual void HandleAttack() {
+    }
+    
+    protected virtual void HandleMove() {
     }
     
     public virtual void UseBooster() {

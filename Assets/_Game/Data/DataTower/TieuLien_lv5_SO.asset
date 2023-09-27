@@ -21,4 +21,4 @@ MonoBehaviour:
   delayAttack: 1
   maxHp: 7
   dame: 1
-  bullet: {fileID: 3565617238180767658, guid: f332de6b8cab0c741a4dbb0a0b1ebd4b, type: 3}
+  attackRange: 85

@@ -87,6 +87,8 @@ public class PlacedObjectTypeSO : ScriptableObject
     public float delayAttack;
     public float maxHp;
     public float dame;
+    public float attackRange;
+    public float speed;
 }
 
 public enum Dir
