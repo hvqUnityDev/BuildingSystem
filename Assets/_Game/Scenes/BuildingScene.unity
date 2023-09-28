@@ -574,6 +574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 860548127}
+  - component: {fileID: 860548128}
   m_Layer: 0
   m_Name: SpawnEnemiesPosition
   m_TagString: Untagged
@@ -601,6 +602,26 @@ Transform:
   - {fileID: 1996599386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860548128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860548126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204e8c28ee5b8ec48a4b7a09903c61f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesSO:
+  - {fileID: 11400000, guid: c1dca6154d9a85d40bbfe894547cb79f, type: 2}
+  listSpawnPosition:
+  - {fileID: 395146230}
+  - {fileID: 1844745579}
+  - {fileID: 163230304}
+  - {fileID: 1077099559}
+  - {fileID: 1996599386}
 --- !u!1 &998953831
 GameObject:
   m_ObjectHideFlags: 0

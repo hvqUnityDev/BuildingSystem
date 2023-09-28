@@ -89,6 +89,7 @@ public class PlacedObjectTypeSO : ScriptableObject
     public float dame;
     public float attackRange;
     public float speed;
+    public LayerMask layerEnemies;
 }
 
 public enum Dir

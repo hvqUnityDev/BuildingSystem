@@ -1,12 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ActorBase : MonoBehaviour {
     protected float nextTimeNormalAttack, delayAttack, hp, dame, speed;
     [SerializeField] protected float attackRange;
+    [SerializeField] protected Transform pointRay;
     private bool isInit = false;
+    private Ray ray;
+    private LayerMask layerEnemies;
+    private RaycastHit hit;
+
     public virtual void Init(PlacedObjectTypeSO placedObjectTypeSo) {
         isInit = true;
         delayAttack = placedObjectTypeSo.delayAttack;
@@ -14,7 +20,11 @@ public class ActorBase : MonoBehaviour {
         dame = placedObjectTypeSo.dame;
         attackRange = placedObjectTypeSo.attackRange;
         speed = placedObjectTypeSo.speed;
+        layerEnemies = placedObjectTypeSo.layerEnemies;
+        
         nextTimeNormalAttack = Time.time + placedObjectTypeSo.delayAttack;
+        ray = new Ray(pointRay.position, Vector3.right);
+
     }
     
     private void Update() {
@@ -26,9 +36,6 @@ public class ActorBase : MonoBehaviour {
         }
 
         HandleMove();
-    }
-
-    protected virtual void HandleAttack() {
     }
     
     protected virtual void HandleMove() {
@@ -48,5 +55,23 @@ public class ActorBase : MonoBehaviour {
     protected virtual void Dead()
     {
         
+    }
+    
+    protected virtual void HandleAttack()
+    {
+        if (Physics.Raycast(ray,out hit, attackRange, layerEnemies)) {
+            SeeSomeThing();
+        }
+        else {
+            DontSeeSomeThing();
+        }
+    }
+    
+    protected virtual void SeeSomeThing(){
+        Debug.DrawRay(pointRay.position, Vector3.right * hit.distance, Color.yellow);
+    }
+    
+    protected virtual void DontSeeSomeThing(){
+        Debug.DrawRay(pointRay.position, Vector3.right * attackRange, Color.white);
     }
 }

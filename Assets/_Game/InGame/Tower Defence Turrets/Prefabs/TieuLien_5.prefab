@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8953329416798724664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pointRay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7174232784265498657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spawnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3342513876159426882}
   - component: {fileID: 8261075913418866392}
   - component: {fileID: 758337460849925715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TieuLien_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,16 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228069e9706b26346b429dff645bb74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTimeNormalAttack: 0
-  delayAttack: 0
-  hp: 0
-  dame: 0
   attackRange: 0
-  spawnBullet: {fileID: 7174232784265498657}
   pointRay: {fileID: 8953329416798724664}
-  layerEnemies:
-    serializedVersion: 2
-    m_Bits: 128
+  spawnBullet: {fileID: 7174232784265498657}
   bullet: {fileID: 3565617238180767658, guid: f332de6b8cab0c741a4dbb0a0b1ebd4b, type: 3}
 --- !u!1001 &3453802389164077515
 PrefabInstance:
@@ -188,6 +181,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e584902b1490e6a4badeb93a3d113ee8, type: 3}
       propertyPath: m_Name
       value: defence_TieuLien_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e584902b1490e6a4badeb93a3d113ee8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425065496324963309, guid: e584902b1490e6a4badeb93a3d113ee8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

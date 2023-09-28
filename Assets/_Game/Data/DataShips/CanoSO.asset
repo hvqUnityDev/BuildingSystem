@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: Cano
   prefabs: {fileID: 4749907051946038518, guid: d148f82e3173b6c4ba8f26b4316184f0, type: 3}
-  visual: {fileID: 0}
+  visual: {fileID: 4749907051946038518, guid: d148f82e3173b6c4ba8f26b4316184f0, type: 3}
   width: 0
   height: 0
   price: 0
@@ -22,4 +22,7 @@ MonoBehaviour:
   maxHp: 10
   dame: 1
   attackRange: 5
-  speed: 10
+  speed: 5
+  layerEnemies:
+    serializedVersion: 2
+    m_Bits: 256

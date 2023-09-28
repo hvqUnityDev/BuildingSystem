@@ -22,3 +22,7 @@ MonoBehaviour:
   maxHp: 7
   dame: 1
   attackRange: 85
+  speed: 0
+  layerEnemies:
+    serializedVersion: 2
+    m_Bits: 128
