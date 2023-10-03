@@ -11,8 +11,8 @@ public class ActorBase : MonoBehaviour {
     private bool isInit = false;
     private Ray ray;
     private LayerMask layerEnemies;
-    private RaycastHit hit;
-
+    protected RaycastHit hit;
+    [SerializeField] protected bool isCanAttack; 
     public virtual void Init(PlacedObjectTypeSO placedObjectTypeSo) {
         isInit = true;
         delayAttack = placedObjectTypeSo.delayAttack;
@@ -23,18 +23,18 @@ public class ActorBase : MonoBehaviour {
         layerEnemies = placedObjectTypeSo.layerEnemies;
         
         nextTimeNormalAttack = Time.time + placedObjectTypeSo.delayAttack;
-        ray = new Ray(pointRay.position, Vector3.right);
-
+        if(pointRay)
+            ray = new Ray(pointRay.position, Vector3.right);
+        else {
+            Debug.Log($"{gameObject.name} not have pointRay");
+        }
+        isCanAttack = true;
     }
     
-    private void Update() {
+    protected void Update() {
         if (!isInit) return;
 
-        if (nextTimeNormalAttack < Time.time) {
-            HandleAttack();
-            nextTimeNormalAttack += delayAttack;
-        }
-
+        HandleAttack();
         HandleMove();
     }
     
@@ -59,8 +59,12 @@ public class ActorBase : MonoBehaviour {
     
     protected virtual void HandleAttack()
     {
-        if (Physics.Raycast(ray,out hit, attackRange, layerEnemies)) {
-            SeeSomeThing();
+        if (Physics.Raycast(ray,out hit, attackRange, layerEnemies) && pointRay) {
+            Debug.Log(hit.rigidbody.gameObject.name);
+            if (nextTimeNormalAttack < Time.time && isCanAttack) {
+                SeeSomeThing();
+                nextTimeNormalAttack = Time.time + delayAttack;
+            }
         }
         else {
             DontSeeSomeThing();
@@ -68,10 +72,12 @@ public class ActorBase : MonoBehaviour {
     }
     
     protected virtual void SeeSomeThing(){
-        Debug.DrawRay(pointRay.position, Vector3.right * hit.distance, Color.yellow);
+        if(pointRay)
+            Debug.DrawRay(pointRay.position, Vector3.right * hit.distance, Color.yellow);
     }
     
     protected virtual void DontSeeSomeThing(){
-        Debug.DrawRay(pointRay.position, Vector3.right * attackRange, Color.white);
+        if(pointRay)
+            Debug.DrawRay(pointRay.position, Vector3.right * attackRange, Color.white);
     }
 }

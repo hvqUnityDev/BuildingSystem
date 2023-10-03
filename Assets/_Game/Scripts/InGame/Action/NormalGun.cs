@@ -11,6 +11,8 @@ public class NormalGun : ActorBase {
 
 	protected override void SeeSomeThing() {
 		base.SeeSomeThing();
-		Instantiate(bullet, spawnBullet.position, quaternion.identity);
+		var b = Instantiate(bullet, spawnBullet.position, quaternion.identity);
+		b.SetTarget(hit.transform);
+		b.SetDame(dame);
 	}
 }

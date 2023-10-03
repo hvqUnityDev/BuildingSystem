@@ -18,10 +18,10 @@ MonoBehaviour:
   width: 0
   height: 0
   price: 0
-  delayAttack: 0
+  delayAttack: 1
   maxHp: 10
   dame: 1
-  attackRange: 5
+  attackRange: 8
   speed: 5
   layerEnemies:
     serializedVersion: 2

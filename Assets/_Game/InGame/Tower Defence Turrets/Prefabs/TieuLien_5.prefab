@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 3342513876159426882}
   - component: {fileID: 8261075913418866392}
   - component: {fileID: 758337460849925715}
+  - component: {fileID: 1673512231462656469}
   m_Layer: 8
   m_Name: TieuLien_5
   m_TagString: Untagged
@@ -124,8 +125,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 0
   pointRay: {fileID: 8953329416798724664}
+  isCanAttack: 0
   spawnBullet: {fileID: 7174232784265498657}
   bullet: {fileID: 3565617238180767658, guid: f332de6b8cab0c741a4dbb0a0b1ebd4b, type: 3}
+--- !u!65 &1673512231462656469
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487638027827680212}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 2, z: 4}
+  m_Center: {x: 2, y: 0.5, z: 2}
 --- !u!1001 &3453802389164077515
 PrefabInstance:
   m_ObjectHideFlags: 0
