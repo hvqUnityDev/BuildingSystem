@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8953329416798724664}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: pointRay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7174232784265498657}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: spawnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,8 @@ GameObject:
   - component: {fileID: 8261075913418866392}
   - component: {fileID: 758337460849925715}
   - component: {fileID: 1673512231462656469}
-  m_Layer: 8
+  - component: {fileID: 6864698589669709911}
+  m_Layer: 7
   m_Name: TieuLien_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 0
   pointRay: {fileID: 8953329416798724664}
+  isInit: 0
+  layerEnemies:
+    serializedVersion: 2
+    m_Bits: 0
   isCanAttack: 0
   spawnBullet: {fileID: 7174232784265498657}
   bullet: {fileID: 3565617238180767658, guid: f332de6b8cab0c741a4dbb0a0b1ebd4b, type: 3}
@@ -143,12 +148,39 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 4, y: 2, z: 4}
   m_Center: {x: 2, y: 0.5, z: 2}
+--- !u!54 &6864698589669709911
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487638027827680212}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3453802389164077515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,11 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e584902b1490e6a4badeb93a3d113ee8, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2425065496324963309, guid: e584902b1490e6a4badeb93a3d113ee8, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

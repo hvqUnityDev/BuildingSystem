@@ -10,6 +10,7 @@ public class EnemiesController : MonoBehaviour {
     [SerializeField] private bool isSpawn = true;
     private float timeSpawn = 0;
     private List<ActorBase> actorBases;
+    private Dir dir = Dir.Left;
 
     private void Start() {
         actorBases = new List<ActorBase>();
@@ -21,6 +22,7 @@ public class EnemiesController : MonoBehaviour {
             PlacedObjectTypeSO placeSO = enemiesSO[Random.Range(0, enemiesSO.Count)];
             Transform trans = listSpawnPosition[Random.Range(0, listSpawnPosition.Count)];
             var actor = Instantiate( placeSO.prefabs, trans).GetComponent<ActorBase>();
+            actor.SetRotation(new Vector3(0, placeSO.GetRotationAngle(dir), 0));
             actor.Init(placeSO);
             actorBases.Add(actor);
         }

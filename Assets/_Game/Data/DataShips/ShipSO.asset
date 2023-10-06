@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aec3cacaceb2804c9a5da2964d8549c, type: 3}
+  m_Name: ShipSO
+  m_EditorClassIdentifier: 
+  nameString: Ship
+  prefabs: {fileID: 3342513876159426882, guid: 0c8b0c02c546f9246af5a2d4f129582a, type: 3}
+  visual: {fileID: 3342513876159426882, guid: 0c8b0c02c546f9246af5a2d4f129582a, type: 3}
+  width: 0
+  height: 0
+  price: 0
+  delayAttack: 1
+  maxHp: 10
+  dame: 1
+  attackRange: 50
+  speed: 5
+  layerEnemies:
+    serializedVersion: 2
+    m_Bits: 128

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aec3cacaceb2804c9a5da2964d8549c, type: 3}
   m_Name: TieuLien_lv5_SO
   m_EditorClassIdentifier: 
-  nameString: Tieu Lien
+  nameString: Gun
   prefabs: {fileID: 3342513876159426882, guid: 0c8b0c02c546f9246af5a2d4f129582a, type: 3}
   visual: {fileID: 3342513876159426882, guid: b58d2d5564332304faaed19a515b777b, type: 3}
   width: 1

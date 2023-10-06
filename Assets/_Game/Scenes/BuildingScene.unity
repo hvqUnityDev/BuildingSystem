@@ -622,6 +622,7 @@ MonoBehaviour:
   - {fileID: 163230304}
   - {fileID: 1077099559}
   - {fileID: 1996599386}
+  isSpawn: 1
 --- !u!1 &998953831
 GameObject:
   m_ObjectHideFlags: 0

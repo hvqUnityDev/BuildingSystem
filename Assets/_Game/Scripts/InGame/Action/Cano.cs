@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanoShip : ActorBase {
+public class Cano : ActorBase {
 	[SerializeField] private Vector3 dirMove = Vector3.left;
 	[SerializeField] private bool isCanMove = true;
 
@@ -13,12 +13,12 @@ public class CanoShip : ActorBase {
 	}
 
 	private void ConvertRangeAttack() {
-		// if (dirMove == Vector3.left) {
-		// 	attackRange = -Mathf.Abs(attackRange);
-		// }
-		// else if (dirMove == Vector3.left) {
-		// 	attackRange = Mathf.Abs(attackRange);
-		// }
+		if (dirMove == Vector3.left) {
+			attackRange = -Mathf.Abs(attackRange);
+		}
+		else if (dirMove == Vector3.left) {
+			attackRange = Mathf.Abs(attackRange);
+		}
 	}
 
 	protected override void HandleMove() {
@@ -34,13 +34,14 @@ public class CanoShip : ActorBase {
 		}
 	}
 
-	protected override void DontSeeSomeThing() {
-		base.DontSeeSomeThing();
+	protected override void DontSeeAnyThing() {
+		base.DontSeeAnyThing();
 	}
 
 	protected override void Dead() {
 		base.Dead();
 		isCanMove = false;
+		gameObject.SetActive(false);
 	}
 
 	private void OnTriggerEnter(Collider other) {

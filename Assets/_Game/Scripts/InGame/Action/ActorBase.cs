@@ -8,9 +8,9 @@ public class ActorBase : MonoBehaviour {
     protected float nextTimeNormalAttack, delayAttack, hp, dame, speed;
     [SerializeField] protected float attackRange;
     [SerializeField] protected Transform pointRay;
-    private bool isInit = false;
-    private Ray ray;
-    private LayerMask layerEnemies;
+    [SerializeField] private bool isInit = false;
+    protected Ray ray;
+    [SerializeField] private LayerMask layerEnemies;
     protected RaycastHit hit;
     [SerializeField] protected bool isCanAttack; 
     public virtual void Init(PlacedObjectTypeSO placedObjectTypeSo) {
@@ -57,9 +57,8 @@ public class ActorBase : MonoBehaviour {
         
     }
     
-    protected virtual void HandleAttack()
-    {
-        if (Physics.Raycast(ray,out hit, attackRange, layerEnemies) && pointRay) {
+    protected virtual void HandleAttack() {
+        if (Physics.Raycast(ray, out hit, attackRange, layerEnemies) && pointRay) {
             Debug.Log(hit.rigidbody.gameObject.name);
             if (nextTimeNormalAttack < Time.time && isCanAttack) {
                 SeeSomeThing();
@@ -67,7 +66,7 @@ public class ActorBase : MonoBehaviour {
             }
         }
         else {
-            DontSeeSomeThing();
+            DontSeeAnyThing();
         }
     }
     
@@ -76,8 +75,12 @@ public class ActorBase : MonoBehaviour {
             Debug.DrawRay(pointRay.position, Vector3.right * hit.distance, Color.yellow);
     }
     
-    protected virtual void DontSeeSomeThing(){
+    protected virtual void DontSeeAnyThing(){
         if(pointRay)
-            Debug.DrawRay(pointRay.position, Vector3.right * attackRange, Color.white);
+            Debug.DrawRay(pointRay.position, Vector3.right * attackRange, Color.blue);
+    }
+
+    public void SetRotation(Vector3 rotation) {
+        transform.rotation = Quaternion.Euler(rotation);
     }
 }
