@@ -11,7 +11,9 @@ public class HomeController : MonoBehaviour {
 
     private void Start() {
         HideAllUI();
-        loginUI.Show();
+        var progress = UserDataController.Instance.GetData<Progress>(UserDataKeys.USER_PROGRESSION, out _);
+        if(!progress.isLogin)
+            loginUI.Show();
         homeUI.Show();
     }
 

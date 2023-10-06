@@ -45,10 +45,7 @@ public interface IUserData
 
 
 [Serializable]
-public class ShopInfoCharacterAds
-{
-    public string id;
-    public int currentAdsWatched;
-    public int amountAdsNeed;
+public class Progress : IUserData {
+    public bool isLogin = false;
 }
 
