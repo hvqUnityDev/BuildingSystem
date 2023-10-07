@@ -35,6 +35,7 @@ public class UserDataController : SingletonBehaviourDontDestroy<UserDataControll
 public class UserDataKeys
 {
     public const string USER_PROGRESSION = "data.user_prog";
+    public const string USER_SETTING = "data.user_setting";
 }
 
 public interface IUserData
@@ -47,5 +48,10 @@ public interface IUserData
 [Serializable]
 public class Progress : IUserData {
     public bool isLogin = false;
+}
+
+[Serializable]
+public class Setting : IUserData {
+    public float volume = 0.8f;
 }
 

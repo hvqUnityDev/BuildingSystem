@@ -8,6 +8,7 @@ public class HomeController : MonoBehaviour {
     [SerializeField] private HomeUI homeUI;
     [SerializeField] private BagUI bagUI;
     [SerializeField] private ShopUI shopUI;
+    [SerializeField] private SettingUI settingUI;
 
     private void Start() {
         HideAllUI();
@@ -15,6 +16,7 @@ public class HomeController : MonoBehaviour {
         if(!progress.isLogin)
             loginUI.Show();
         homeUI.Show();
+        settingUI.LoadValueSlider();
     }
 
     private void HideAllUI() {
@@ -22,5 +24,6 @@ public class HomeController : MonoBehaviour {
         homeUI.Hide();
         bagUI.Hide();
         shopUI.Hide();
+        settingUI.Hide();
     }
 }
